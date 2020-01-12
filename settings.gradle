@@ -1,0 +1,2 @@
+rootProject.name = 'clean-mvvm+architecture_com+koin'
+include Modules.app, Modules.network, Modules.presentation

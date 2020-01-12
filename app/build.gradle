@@ -1,0 +1,110 @@
+//noinspection GradleDependency
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
+apply plugin: 'kotlin-kapt'
+
+def props = new Properties()
+file("../signing.properties").withInputStream { props.load(it) }
+
+android {
+    compileSdkVersion Versions.compileSdk
+    buildToolsVersion Versions.buildTool
+    defaultConfig {
+        applicationId ApplicationId.id
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode Releases.versionCode
+        versionName Releases.versionName
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    testBuildType "mock"
+    signingConfigs {
+        release {
+            keyAlias props.getProperty('keyAlias')
+            keyPassword props.getProperty('keyPassword')
+            storeFile file(props.getProperty('storeFile'))
+            storePassword props.getProperty('storePassword')
+        }
+    }
+    buildTypes {
+        mock {
+            initWith debug
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(Modules.network)
+    implementation project(Modules.presentation)
+    implementation Libraries.kotlin
+    implementation SupportLibraries.appcompat
+    implementation Libraries.ktx
+    implementation SupportLibraries.design
+    implementation SupportLibraries.constraintLayout
+    implementation Libraries.lifecycleExtensions
+    implementation Libraries.navigationUiExt
+    implementation Libraries.navigationFragment
+    implementation Libraries.navigationFragmentExt
+
+    // Networking
+    implementation Libraries.gson
+    implementation Libraries.retrofit
+
+    // Image
+    implementation Libraries.glide
+
+    // Rx
+    implementation Libraries.rxkotlin
+    implementation Libraries.rxjava
+
+    // Koin
+    implementation Libraries.koinAndroid
+    implementation Libraries.koinViewModel
+
+    // Room
+    implementation Libraries.room
+    implementation Libraries.rxRoom
+    kapt Libraries.roomCompiler
+
+    implementation Libraries.jodaTime
+
+    testImplementation TestLibraries.junit
+    testImplementation TestLibraries.assertjCore
+    testImplementation TestLibraries.mockitoKotlin
+    testImplementation TestLibraries.mockitoInline
+    testImplementation TestLibraries.lifecycleTesting
+    testImplementation TestLibraries.jodaTime
+    testImplementation TestLibraries.mockWebServer
+    mockImplementation TestLibraries.mockWebServer
+    testImplementation Libraries.moshiConverter
+    testImplementation Libraries.rxjavaAdapter
+
+    androidTestImplementation TestLibraries.lifecycleTesting
+    androidTestImplementation TestLibraries.extJunit
+    androidTestImplementation TestLibraries.espressoCore
+    androidTestImplementation TestLibraries.espressoContrib
+    androidTestImplementation TestLibraries.testRule
+    androidTestImplementation TestLibraries.kakao
+}
