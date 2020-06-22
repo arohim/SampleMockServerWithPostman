@@ -1,2 +1,2 @@
-rootProject.name = 'clean-mvvm+architecture_com+koin'
+rootProject.name = 'SampleMockServerWithPostman'
 include Modules.app, Modules.network, Modules.presentation

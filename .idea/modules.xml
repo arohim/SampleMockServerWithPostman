@@ -2,10 +2,16 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/SampleMockServerWithPostman.iml" filepath="$PROJECT_DIR$/SampleMockServerWithPostman.iml" group="SampleMockServerWithPostman" />
+      <module fileurl="file://$PROJECT_DIR$/app/SampleMockServerWithPostman-app.iml" filepath="$PROJECT_DIR$/app/SampleMockServerWithPostman-app.iml" group="SampleMockServerWithPostman/app" />
+      <module fileurl="file://$PROJECT_DIR$/buildSrc/SampleMockServerWithPostman-buildSrc.iml" filepath="$PROJECT_DIR$/buildSrc/SampleMockServerWithPostman-buildSrc.iml" group="SampleMockServerWithPostman/buildSrc" />
+      <module fileurl="file://$PROJECT_DIR$/common/SampleMockServerWithPostman-common.iml" filepath="$PROJECT_DIR$/common/SampleMockServerWithPostman-common.iml" group="SampleMockServerWithPostman/common" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/buildSrc/buildSrc.iml" filepath="$PROJECT_DIR$/buildSrc/buildSrc.iml" />
       <module fileurl="file://$PROJECT_DIR$/clean-mvvm+architecture_com+koin.iml" filepath="$PROJECT_DIR$/clean-mvvm+architecture_com+koin.iml" />
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/network/common-network.iml" filepath="$PROJECT_DIR$/common/network/common-network.iml" group="SampleMockServerWithPostman/common/network" />
+      <module fileurl="file://$PROJECT_DIR$/common/presentation/common-presentation.iml" filepath="$PROJECT_DIR$/common/presentation/common-presentation.iml" group="SampleMockServerWithPostman/common/presentation" />
       <module fileurl="file://$PROJECT_DIR$/common/network/network.iml" filepath="$PROJECT_DIR$/common/network/network.iml" />
       <module fileurl="file://$PROJECT_DIR$/common/presentation/presentation.iml" filepath="$PROJECT_DIR$/common/presentation/presentation.iml" />
     </modules>
