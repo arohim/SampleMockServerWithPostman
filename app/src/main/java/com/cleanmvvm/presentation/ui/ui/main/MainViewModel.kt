@@ -13,7 +13,8 @@ class MainViewModel constructor(
 
     val data: LiveData<List<GitHubRepository>?> = liveData(Dispatchers.IO) {
         val retrievedData = gitHubRepositoriesApi.getRepositories()
-        emit(retrievedData.body())
+        val values: List<GitHubRepository>? = retrievedData.body()
+        emit(values)
     }
 
 }

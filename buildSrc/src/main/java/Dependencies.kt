@@ -14,7 +14,7 @@ object Releases {
 }
 
 object Versions {
-    const val gradle = "3.5.2"
+    const val gradle = "3.6.3"
     const val compileSdk = 29
 
     const val buildTool = "29.0.2"
@@ -30,7 +30,7 @@ object Versions {
     const val cardview = "1.0.0"
     const val recyclerview = "1.0.0"
     const val maps = "15.0.1"
-    const val ktx = "1.1.0"
+    const val ktx = "1.3.0"
 
     const val kotlin = "1.3.61"
 
