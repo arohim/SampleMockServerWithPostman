@@ -3,6 +3,8 @@ package com.cleanmvvm.di
 import com.cleanmvvm.BuildConfig
 import com.cleanmvvm.datasource.remote.GitHubRepositoriesApi
 import com.cleanmvvm.network.createNetworkClient
+import com.cleanmvvm.presentation.ui.ui.main.MainViewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -20,7 +22,7 @@ private val loadFeature by lazy {
 }
 
 val viewModelModule: Module = module {
-    //    viewModel { }
+    viewModel { MainViewModel(get()) }
 }
 
 

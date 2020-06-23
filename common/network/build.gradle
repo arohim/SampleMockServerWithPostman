@@ -5,7 +5,7 @@ dependencies {
     implementation Libraries.rxkotlin
 
     implementation Libraries.retrofit
-    implementation Libraries.moshiConverter
+    api Libraries.moshiConverter
     implementation Libraries.loggingInterceptor
     implementation Libraries.rxjavaAdapter
 }

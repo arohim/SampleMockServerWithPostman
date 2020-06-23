@@ -49,7 +49,7 @@ object Versions {
     const val koin = "2.0.0-beta-1"
     const val constraintLayout = "1.1.3"
     const val gson = "2.8.6"
-    const val navigation = "2.1.0"
+    const val navigation = "2.3.0-rc01"
     const val roomVersion = "2.2.2"
     const val roomCompilerVersion = "2.1.0"
     const val jodaTime = "2.10.3"

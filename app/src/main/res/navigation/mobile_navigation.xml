@@ -3,14 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_download">
+    app:startDestination="@+id/mainFragment">
 
-<!--    <fragment-->
-<!--        android:id="@+id/navigation_download"-->
-<!--        android:name="com.cleanmvvm.presentation.article.ArticleListFragment"-->
-<!--        android:label="@string/article_list_title"-->
-<!--        tools:layout="@layout/fragment_article_list">-->
 
-<!--    </fragment>-->
-
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.cleanmvvm.presentation.ui.ui.main.MainFragment"
+        android:label="MainFragment" />
 </navigation>
