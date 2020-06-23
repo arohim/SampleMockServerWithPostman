@@ -7,20 +7,34 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.lang.Exception
 
 class MainViewModel constructor(
     private val gitHubRepositoriesApi: GitHubRepositoriesApi
 ) : ViewModel() {
 
-    val data: MutableLiveData<List<GitHubRepository>> = MutableLiveData()
-    val handler = CoroutineExceptionHandler { _, exception -> }
+    val data: MutableLiveData<List<GitHubRepository>?> = MutableLiveData()
+
+    val error = MutableLiveData<String>()
+
+    private val handler = CoroutineExceptionHandler { _, exception ->
+        error.value = exception.message
+    }
 
     init {
         viewModelScope.launch(handler) {
             withContext(Dispatchers.IO) {
-                val retrievedData = gitHubRepositoriesApi.getRepositories()
-                val values: List<GitHubRepository>? = retrievedData.body()
-                data.postValue(values)
+                try {
+                    val retrievedData = gitHubRepositoriesApi.getRepositories()
+                    if (retrievedData.isSuccessful) {
+                        val values: List<GitHubRepository>? = retrievedData.body()
+                        data.postValue(values)
+                    } else {
+                        error.postValue(retrievedData.message())
+                    }
+                } catch (e: Exception) {
+                    error.postValue(e.message)
+                }
             }
         }
     }

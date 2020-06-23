@@ -38,8 +38,16 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.data.observe(viewLifecycleOwner, Observer {
             adapter.submitList(it)
-            binding.recyclerView.isVisible = it.isNotEmpty()
-            binding.noReposText.isVisible = it.isEmpty()
+            binding.recyclerView.isVisible = it?.isNotEmpty() ?: false
+            binding.noReposText.isVisible = it?.isEmpty() ?: false
+        })
+
+        viewModel.error.observe(viewLifecycleOwner, Observer {
+            binding.retryButton.isVisible = true
+            binding.error.isVisible = true
+            binding.error.text = it
+            binding.recyclerView.isVisible = false
+            binding.noReposText.isVisible = false
         })
     }
 
